@@ -19,11 +19,14 @@
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((array) => {
+        answer.innerHTML = "Loading...";
         array.forEach((element) => {
           text += `<li><ul><li>UserId: ${element.userId}</li><li>ElementId: ${element.id}</li><li>Title: ${element.title}</li><li> Content:${element.body}</li></ul></li>`;
           console.log(element.id);
         });
-        answer.innerHTML = "<ul>" + text + "</ul>";
+        setTimeout(() => {
+          answer.innerHTML = "<ul>" + text + "</ul>";
+        }, 2000);
       });
   });
 
