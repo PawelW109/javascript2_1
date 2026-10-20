@@ -4,6 +4,7 @@
   const cw2 = document.getElementById("cw2");
   const cw3 = document.getElementById("cw3");
   const answer = document.getElementById("answer");
+  const options = document.getElementById("options");
 
   example.addEventListener("click", function () {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -29,6 +30,24 @@
         }, 2000);
       });
   });
+
+  for (let i = 1; i <= 10; i++) {
+    options.innerHTML += `<option>${i}</option>`;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const post = params.get("Post");
+  console.log(post);
+
+  let text = "";
+  fetch("https://jsonplaceholder.typicode.com/posts/" + post)
+    .then((response) => response.json())
+    .then((element) => {
+      answer.innerHTML = "Loading...";
+      text += `<li><ul><li>UserId: ${element.userId}</li><li>ElementId: ${element.id}</li><li>Title: ${element.title}</li><li> Content:${element.body}</li></ul></li>`;
+      answer.innerHTML = "<ul>" + text + "</ul>";
+      console.log(element);
+    });
 
   cw2.addEventListener("click", function () {
     //TODO
