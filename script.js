@@ -20,7 +20,7 @@
       .then((response) => response.json())
       .then((array) => {
         array.forEach((element) => {
-          text += `<li><ul><li>${element.userId}</li><li>${element.id}</li><li>${element.title}</li><li>${element.body}</li></ul></li>`;
+          text += `<li><ul><li>UserId: ${element.userId}</li><li>ElementId: ${element.id}</li><li>Title: ${element.title}</li><li> Content:${element.body}</li></ul></li>`;
           console.log(element.id);
         });
         answer.innerHTML = "<ul>" + text + "</ul>";
